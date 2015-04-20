@@ -5,7 +5,13 @@ var Index = function(characters, nodes) {
     this._nodes = nodes;
 };
 Index.prototype.searchNodesBy = function(character) {
-    var ind = bs.first(this._chars,character);
+    var ind = bs.first(this._chars,character,
+                       function (a, b) {
+                           if (a.toString() < b.toString()) return -1;
+                           if (a.toString() > b.toString()) return 1;
+                           return 0;
+                       }
+                      );
     if(ind == -1) return undefined;
     return this._nodes[ind];
 };

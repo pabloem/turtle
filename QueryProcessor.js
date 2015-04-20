@@ -90,13 +90,14 @@ QueryProcessor.prototype._processNodeQuery = function(query) {
 QueryProcessor.prototype._processSearchQuery = function(query) {
     query.res = [];
     for(var i=0; i < query.terms.length; i++){
-        this._searchTerm(query.terms[i]);
+        this._searchTerm(query,query.terms[i]);
     }
 };
 QueryProcessor.prototype._searchTerm = function(query,term){
     var testChar = term[0];
     for(var j = 0; j < this._langs.length; j++) {
         if(this._regexps[this._langs[j]].test(testChar)) {
+            console.log("Term "+term+" is "+this._langs[j]);
             this._searchLangTerm(query,term,this._langs[j]);
             break;
         }
@@ -117,7 +118,7 @@ QueryProcessor.prototype._searchLangTerm = function(query,term,lang) {
         }
     }
     for(var k = 0; k<node_ids.length; k++) {
-        query.res.push(this._gs.getNode(query.terms[i]));
+        query.res.push(this._gs.getNode(node_ids[k]));
     }
     return ;
 };

@@ -25,7 +25,7 @@ var GraphStructure = function(filename) {
 GraphStructure.prototype.getNode = function(node_index,full_node) {
     var elems = ['english','chinese','korean'];
     if(full_node) elems.push('neighbors');
-    var res = {};
+    var res = {id: node_index};
     for(var elm_i=0; elm_i<elems.length; elm_i++) {
         var label = elems[elm_i];
         res[label] = this._graph.nodes[label][node_index];
