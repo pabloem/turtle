@@ -7,7 +7,7 @@ div#holdall{
     position: relative;
 }
 #leftpad{
-    width:150px;
+    width:200px;
     height: 800px;
     display: inline-block;
     margin:5px auto;
