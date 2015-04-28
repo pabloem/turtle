@@ -15,21 +15,25 @@ function searchQueryResult() {
     console.log(hr.req.status);
     if(hr.req.readyState == 4 && hr.req.status == 200) {
         var res = eval(hr.req.responseText);
-//        console.log(res);
         $("#results").html("");
+        var i = 0;
         $.each(res, 
                function() {
+                   var cont = "<p id=\"p_ck\"><b>"+
+                           this.chinese+"</b>&emsp;  " +
+                           this.korean+"</p><p id=\"p_en\">"+
+                           this.english +"</p>";
+                   i++;
+                   var litype = i%2 == 0 ? "li_odd" : "li_even";
                    $("#results").append(
                        $('<li>')
+                           .attr('id',litype)
                            .data(this)
-                           .append(this.english));
+                           .append(cont));
                });
         $('#results li').on('click',function(){
             var nod = $(this).data();
-
-            // Might want to move this to the HanjaExplorer class
-
-            he.showNode($(this).data());
+            he.showNode($(this).data(),false);
         });
     }
 };

@@ -8,9 +8,8 @@ div#holdall{
 }
 #leftpad{
     width:200px;
-    height: 800px;
+    height: 100%;
     display: inline-block;
-    margin:5px auto;
     border-right:2px solid#EEEEEE;
     background:#FFFFFF;
     vertical-align: top;
@@ -18,7 +17,7 @@ div#holdall{
 #inputdiv{
     display: inline-block;
     width: 100%;
-    height: 18px;
+    height: 16px;
 }
 input#q{
     position: absolute;
@@ -33,12 +32,22 @@ ul#results {
     padding: 0px;
     margin: 0px;
 }
-li{
+#li_odd{
     color:#666;
     font-size: 12px;
     padding: 4px;
+    background: #FFFFFF;
 }
-li:hover{
+#li_even{
+    color:#666;
+    font-size: 12px;
+    padding: 4px;
+    background: #EEEEEE;
+}
+#li_odd:hover{
+    background: #DDDDDD;
+}
+#li_even:hover{
     background: #DDDDDD;
 }
 body {
@@ -47,7 +56,10 @@ body {
 #container {
     display: inline-block;
     width: 800px;
-    height: 800px;
+    height: 100%;
     vertical-align: top;
 }
 
+p {
+    margin: 1px;
+}
