@@ -25,6 +25,6 @@ var __dirname = config.siteDir;
 app.get('/runquery', function(req,res) { hs.handleQuery(req,res); });
 app.get('/demoquery', function(req,res) { req.headers.query = 'search as'; hs.handleQuery(req,res); });
 app.use(express.static(__dirname));
-app.listen(8090);
+app.listen(config.listenPort);
 
 console.log('Start');

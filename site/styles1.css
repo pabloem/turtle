@@ -10,3 +10,28 @@ p {
 li:hover{
     background: #DDDDDD;
 }
+
+
+#holdall {
+    width: 1060px;
+    margin: 0 auto;
+}
+
+#searchresults {
+    float: left;
+    width: 180px;
+}
+
+#container {
+    float: left;
+    width: 720px;
+}
+
+#details {
+    float: left;
+    width: 160px;
+}
+
+#footer {
+    clear: both;
+}

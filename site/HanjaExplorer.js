@@ -1,24 +1,58 @@
 var HanjaExplorer = function(hanjaRequester, config) {
     this._hr = hanjaRequester;
-    this._r = new sigma({container: 'container'});
+    this._r = new sigma({container: 'container',
+                         settings: {
+                             doubleClickEnabled: false
+                         }
+                        });
     this._neighbor_scale = [7,10,13,16,19,22,25,5000];
     this.refresh();
 
     var he = this;
     this._r.bind('clickNode', function(e) {
+        var node = e.data.node;
+        he._showNodeDetails(node);
+    });
+    this._r.bind('doubleClickNode',function(e) {
         var node_id = e.data.node.id;
         he._setFocus(node_id);
     });
-/*
-    this._r.bind('doubleClickNode',function(e) {
-        var node_id = e.data.node.id;
-        he._r.graph.dropNode(node_id);
-    });*/
 };
-
+HanjaExplorer.prototype._displayRootInfo = function() {
+    if(!(this._hr.req.readyState == 4 && this._hr.req.status == 200)) return;
+    var res = eval(this._hr.req.responseText);
+    if(res.length == 0) return;
+    res = res[0];
+    var det = {};
+    det.of = "the character";
+    det.instruction = "(See on the left, words that use this character.)";
+    det.main = res.chinese;
+    det.secondary = "Radicals: <p>"+res.radicals+"</p>";
+    det.tertiary = res.meaning;
+    fillInDetails(det);
+    this._hr.searchRequest(res.chinese,searchQueryResult,false);
+};
+HanjaExplorer.prototype.displayRoot = function(root) {
+    this._hr.rootRequest(root,this._displayRootInfo.bind(this));
+};
+HanjaExplorer.prototype._showNodeDetails = function(node) {
+    var det = {};
+    det.of = "the word";
+    det.instruction = "(Click on a character if you want to learn about it.)";
+    det.main = "<lu id='roots'><li>"+
+        node.chinese
+        .split("")
+        .join("</li><li>")
+        +"</li></lu>";
+    det.secondary = node.korean;
+    det.tertiary = node.english;
+    fillInDetails(det);
+    setRootsClickEvent();
+};
 HanjaExplorer.prototype.showNode = function(node,neighbors) {
     if("undefined" == typeof neighbors) neighbors = true;
     this._addNode(node);
+    this._showNodeDetails(node);
     this._setFocus(node.id, neighbors);
 };
 

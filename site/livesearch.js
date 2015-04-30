@@ -11,6 +11,24 @@ $(function(){
     }); 
 });
 
+function fillInDetails(node) {
+    var cont = "<li id='header_det'>Details of "+node.of+"</li>"+
+            "<li id='note_det'>"+node.instruction+"</li>"+
+            "<li id='space_det'></li>"+
+            "<li id='main_det'></li>"+
+            "<li id='secondary_det'>"+node.secondary+"</li>"+
+            "<li id='tertiary_det'>"+node.tertiary+"</li>";
+    $("#dlist").html(cont);
+    $("#main_det").html(node.main);
+}
+function setRootsClickEvent() {
+    $("#roots li").on('click', function() {
+        var root = $(this).text();
+        $("#q").val(root);
+        he.displayRoot(root);
+    });
+}
+
 function searchQueryResult() {
     console.log(hr.req.status);
     if(hr.req.readyState == 4 && hr.req.status == 200) {
