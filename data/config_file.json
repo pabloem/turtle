@@ -1,0 +1,5 @@
+{
+    "graphFile" : "/home/pablo/codes/turtle/data/kor_graph.graphml",
+    "dictFile":"/home/pablo/codes/turtle/data/hanja_list.json",
+    "siteDir":"/home/pablo/codes/turtle/site"
+}

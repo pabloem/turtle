@@ -1,6 +1,12 @@
-*{font-family:Tahoma,Geneva,sans-serif}
-body{background:#ffffff}
-
+*{
+    font-family:Tahoma,Geneva,sans-serif;
+}
+body{
+    background:#ffffff;
+}
+p {
+    margin: 1px;
+}
 li:hover{
     background: #DDDDDD;
 }
