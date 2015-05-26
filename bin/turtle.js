@@ -6,6 +6,7 @@ var HanjaServer = require('../lib/HanjaServer.js'),
     fs = require('fs');
 
 var app = express();
+app.enable('trust proxy');
 
 var args = process.argv.slice(2);
 if(args.length < 1 || args.length > 3) {
@@ -24,6 +25,9 @@ var hs = new HanjaServer({ 'graphFile' : config.graphFile,
 var __dirname = config.siteDir;
 app.get('/runquery', function(req,res) { hs.handleQuery(req,res); });
 app.get('/demoquery', function(req,res) { req.headers.query = 'search as'; hs.handleQuery(req,res); });
+app.get('/facebook', function(req,res) { console.log("IP of bad guy: "); console.log(req.ip);
+                                         res.writeHeader(200,{"Content-Type": "text/html; charset=utf-8"});
+                                         res.end(); });
 app.use(express.static(__dirname));
 app.listen(config.listenPort);
 

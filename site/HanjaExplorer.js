@@ -5,7 +5,7 @@ var HanjaExplorer = function(hanjaRequester, config) {
                              doubleClickEnabled: false
                          }
                         });
-    this._neighbor_scale = [7,10,13,16,19,22,25,5000];
+    this._neighbor_scale = [7,10,13,16,19,25,33,45,60,80,110,160,200,5000];
     this.refresh();
 
     var he = this;
@@ -27,7 +27,11 @@ HanjaExplorer.prototype._displayRootInfo = function() {
     det.of = "the character";
     det.instruction = "(See on the left, words that use this character.)";
     det.main = res.chinese;
-    det.secondary = "Radicals: <p>"+res.radicals+"</p>";
+    if(res.radicals) {
+        det.secondary = "Radicals: <p>"+res.radicals+"</p>";
+    } else if (res.english) {
+        det.secondary = "English meaning: <p>"+res.english+"</p>";
+    }
     det.tertiary = res.meaning;
     fillInDetails(det);
     this._hr.searchRequest(res.chinese,searchQueryResult,false);
