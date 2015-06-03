@@ -58,9 +58,10 @@ function searchQueryResult() {
 
 function livesearch(){
     var q = $("#q").val().toLowerCase(); 
+    console.log("Searching for: "+q);
     if (q.length == 0) { 
         $("#results").html("");
     } else { 
-        hr.searchRequest(q,searchQueryResult);
+        //hr.searchRequest(q,searchQueryResult);
     }
 };
