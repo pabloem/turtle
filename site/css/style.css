@@ -369,12 +369,12 @@ hr.fullwd {
 }
 .left-sidebar .left-navigation > ul > li {
   line-height: 1.5em;
-  padding: 10px 15px 10px 0;
+  padding: 5px 5px 5px 0;
   border-left: 8px solid transparent;
   transition: all 0.3s;
 }
 .left-sidebar .left-navigation > ul > li h4 {
-  padding-left: 32px;
+  padding-left: 22px;
   line-height: 1.3em;
   transition: all 0.3s;
 }
@@ -442,7 +442,7 @@ hr.fullwd {
   list-style: none;
 }
 .left-sidebar .left-navigation > ul > li ul li {
-  padding-left: 32px;
+  padding-left: 10px;
   transition: all 0.3s;
 }
 .left-sidebar .left-navigation > ul > li ul li a {

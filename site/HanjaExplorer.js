@@ -43,11 +43,11 @@ HanjaExplorer.prototype._showNodeDetails = function(node) {
     var det = {};
     det.of = "the word";
     det.instruction = "(Click on a character if you want to learn about it.)";
-    det.main = "<lu id='roots'><li>"+
+    det.main = "<b><lu id='roots'><a href=\"#\">"+
         node.chinese
         .split("")
-        .join("</li><li>")
-        +"</li></lu>";
+        .join("</a><a href=\"#\">")
+        +"</a></lu></b>";
     det.secondary = node.korean;
     det.tertiary = node.english;
     fillInDetails(det);

@@ -15,6 +15,8 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
 
     <!-- =========================
        STYLESHEETS 
@@ -86,6 +88,18 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
         </div>
         <!-- /END FLUID CONTAINER -->
     </nav>
+<div id="dialog" title="Welcome to the Hanja Explorer!"><p>
+    Do you study Korean language? Ever wonder how Korean words are formed? 
+    The Hanja Explorer is a platform that allows you to
+    visualize Sino-Korean words interactively (i.e. Korean words with Hanja).</p>
+    <p>No matter whether you are a serious student of Korean, or just curious about the
+    language; the Hanja Explorer can make your vocabulary study smarter and more 
+    interesting.</p>
+    <p>
+    To start, you can watch our tutorial below, or if you are familiar with the site,
+    please go ahead : )</p>
+    <p>IMAVIDEO</p>
+</div>
 </header>
 <!-- /END HEADER SECTION  -->
 
@@ -100,45 +114,34 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
             <div id="ResultBar" class="col-md-2 col-sm-6 items">
                 <nav class="left-navigation">
                     <ul>
-                        <li><h4><a href="">Menu Blue Elements</a></h4>
-                            <ul>
-                                <li><a href="#">Element 1</a></li>
-                                <li><a href="#">Element 2</a></li>
-                                <li><a href="#">Element 3</a></li>
-                                <li><a href="#">Element 4</a></li>
+                        <li><h4><a href="">Search results</a></h4>
+                            <ul id="results">
                             </ul>
                         </li>
+                        <!--
                         <li><h4><a href="">Menu Yelow Elements</a></h4>
                             <ul>
                                 <li><a href="#">Element 1</a></li>
-                                <li><a href="#">Element 2</a></li>
-                                <li><a href="#">Element 3</a></li>
-                                <li><a href="#">Element 4</a></li>
                             </ul>
                         </li>
                         <li><h4><a href="">Menu Green Elements</a></h4>
                             <ul>
                                 <li><a href="#">Element 1</a></li>
-                                <li><a href="#">Element 2</a></li>
-                                <li><a href="#">Element 3</a></li>
-                                <li><a href="#">Element 4</a></li>
                             </ul>
                         </li>
                         <li><h4><a href="">Menu Red Elements</a></h4>
                             <ul>
                                 <li><a href="#">Element 1</a></li>
-                                <li><a href="#">Element 2</a></li>
-                                <li><a href="#">Element 3</a></li>
-                                <li><a href="#">Element 4</a></li>
                             </ul>
                         </li>
+                        -->
                     </ul>
                 </nav> <!-- end of .left-navigation -->
 
-                <div class="about-us">
+               <!-- <div class="about-us">
                     <h4>Lorem ipsum Plain Text</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facere perferendis tenetur ommodi ipsum asp illo dignissimos. Minus, tem?</p>
-                </div>                
+                </div>-->
             </div>
         </aside>
         <!-- /END LEFT SIDEBAR - NAVIGATION -->
@@ -158,12 +161,12 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
         <div class="col-md-2 hidden-sm hidden-xs">
             <aside class="right-sidebar">                                
                 <!-- Widget Start -->
-                <div class="widget-readers-job-board">
-                    <h5>Right sidebar</h5>
+                <div id="dlist" class="widget-readers-job-board">
+                    <h5>Details</h5>
                     <p><a href="#">Link Example 1</a> - Other Text</p>
                     <p><a href="#">Link Example 1</a> - Other Text</p>
                     <p><a href="#">Link Example 1</a> - Other Text</p>
-                    <div><a href="#" target="_blank" class="btn btn-fullwd btn-prime">External Link Example</a></div>
+                    <!-- <div><a href="#" target="_blank" class="btn btn-fullwd btn-prime">External Link Example</a></div> -->
                 </div> <!-- end of .readers-job-board -->
                 <!-- Widget End -->
               
@@ -193,13 +196,17 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
 <footer>
     <div class="col-md-12" >
         <div class="col-md-3" ></div>
-        <div class="copyright col-md-3">Copyright 2014. &copy; <a href="http://veltsoft.com/">VeltSoft Systems</a></div>
         <div class="social-icons clearfix col-md-3">                        
                         <ul>
-                            <li><a href=""><i class="fa flaticon-circle6"></i></a></li>
-                            <li><a href=""><i class="fa flaticon-twitter4"></i></a></li>
-                            <li><a href=""><i class="fa flaticon-google7"></i></a></li>
-                            <li><a href=""><i class="fa flaticon-pinterest1"></i></a></li>
+                          <li><a href="#">Suggestions</a>&emsp;</li>
+                          <li><a href="#">About</a>&emsp;</li>
+                          <li><a href="#">Contact</a>&emsp;</li>
+                          <!-- 
+                          <li><a href=""><i class="fa flaticon-circle6"></i></a></li>
+                          <li><a href=""><i class="fa flaticon-twitter4"></i></a></li>
+                          <li><a href=""><i class="fa flaticon-google7"></i></a></li>
+                          <li><a href=""><i class="fa flaticon-pinterest1"></i></a></li>
+                          -->
                         </ul>
                     </div>
     </div>
@@ -218,6 +225,7 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
 <script type="text/javascript" src="./sigma.layout.forceAtlas2/worker.js"></script>
 <script type="text/javascript" src="./sigma.layout.forceAtlas2/supervisor.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://rails-oceania.googlecode.com/svn/lachiecox/qs_score/trunk/qs_score.js"></script> 
 <script type="text/javascript" src="./main.js"></script> 
 

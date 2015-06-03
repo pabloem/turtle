@@ -1,5 +1,9 @@
 var hr = new HanjaReqs();
 var he = new HanjaExplorer(hr);
+$(function() {
+    $("#dialog").dialog({width: 600,
+                         modal: true});
+});
 
 $(function(){ 
     var t = null;
@@ -12,17 +16,17 @@ $(function(){
 });
 
 function fillInDetails(node) {
-    var cont = "<li id='header_det'>Details of "+node.of+"</li>"+
-            "<li id='note_det'>"+node.instruction+"</li>"+
-            "<li id='space_det'></li>"+
-            "<li id='main_det'></li>"+
-            "<li id='secondary_det'>"+node.secondary+"</li>"+
-            "<li id='tertiary_det'>"+node.tertiary+"</li>";
+    var cont = "<h5 id='header_det'>Details of "+node.of+"</h5>"+
+            "<p id='note_det'>"+node.instruction+"</p>"+
+            "<p id='space_det'></li>"+
+            "<p id='main_det'></li>"+
+            "<p id='secondary_det'>"+node.secondary+"</p>"+
+            "<p id='tertiary_det'>"+node.tertiary+"</p>";
     $("#dlist").html(cont);
     $("#main_det").html(node.main);
 }
 function setRootsClickEvent() {
-    $("#roots li").on('click', function() {
+    $("#roots a").on('click', function() {
         var root = $(this).text();
         $("#PrincipalSerch").val(root);
         he.displayRoot(root);
@@ -37,10 +41,10 @@ function searchQueryResult() {
         var i = 0;
         $.each(res, 
                function() {
-                   var cont = "<p id=\"p_ck\"><b>"+
-                           this.chinese+"</b>&emsp;  " +
-                           this.korean+"</p><p id=\"p_en\">"+
-                           this.english +"</p>";
+                   var cont = "<b>" +
+                           this.chinese + "&emsp; " +
+                           this.korean + "</b><br>" +
+                           this.english +"";
                    i++;
                    var litype = i%2 == 0 ? "li_odd" : "li_even";
                    $("#results").append(
@@ -60,7 +64,7 @@ function searchQueryResult() {
 function livesearch(){
     var q = $("#PrincipalSerch").val().toLowerCase(); 
     if (q.length == 0) { 
-        $("#results").html("");
+        //$("#results").html("");
     } else { 
         hr.searchRequest(q,searchQueryResult);
     }
