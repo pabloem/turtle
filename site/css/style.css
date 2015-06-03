@@ -92,7 +92,12 @@ ul {
 #ResultBar {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 500px;
+    height: 700px;
+}
+#container {
+    height: 700px;
+    margine: 0px;
+    padding: 0px;
 }
 
 /***************************************************************************/
