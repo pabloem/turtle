@@ -3,7 +3,7 @@ var he = new HanjaExplorer(hr);
 
 $(function(){ 
     var t = null;
-    $("#q").keyup(function(){ 
+    $("#PrincipalSerch").keyup(function(){ 
         if (t) { 
             clearTimeout(t); 
         } 
@@ -24,7 +24,7 @@ function fillInDetails(node) {
 function setRootsClickEvent() {
     $("#roots li").on('click', function() {
         var root = $(this).text();
-        $("#q").val(root);
+        $("#PrincipalSerch").val(root);
         he.displayRoot(root);
     });
 }
@@ -56,12 +56,12 @@ function searchQueryResult() {
     }
 };
 
+/* Works! TODO - remove comment*/
 function livesearch(){
-    var q = $("#q").val().toLowerCase(); 
-    console.log("Searching for: "+q);
+    var q = $("#PrincipalSerch").val().toLowerCase(); 
     if (q.length == 0) { 
         $("#results").html("");
     } else { 
-        //hr.searchRequest(q,searchQueryResult);
+        hr.searchRequest(q,searchQueryResult);
     }
 };
