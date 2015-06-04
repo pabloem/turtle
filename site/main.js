@@ -1,10 +1,14 @@
 var hr = new HanjaReqs();
 var he = new HanjaExplorer(hr);
-$(function() {
-    $("#dialog").dialog({width: 600,
-                         modal: true});
-});
 
+$("#resTitle").hide();
+$("#about").hide();
+$("#dialog").hide();
+function showDialog(id) {
+    $('#'+id).dialog({width: 600,
+                         modal: true});
+}
+$(showDialog('dialog'));
 $(function(){ 
     var t = null;
     $("#PrincipalSerch").keyup(function(){ 
@@ -38,6 +42,7 @@ function searchQueryResult() {
     if(hr.req.readyState == 4 && hr.req.status == 200) {
         var res = eval(hr.req.responseText);
         $("#results").html("");
+        $("#resTitle").show();
         var i = 0;
         $.each(res, 
                function() {

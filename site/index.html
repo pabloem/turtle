@@ -100,6 +100,14 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
     please go ahead : )</p>
     <p>IMAVIDEO</p>
 </div>
+<div id="about" title="About"><p>
+  The Hanja Explorer was developed by me, <a href="http://github.com/pabloem/">Pablo Estrada</a>,
+  as a side-project while studying my M.S. at Seoul National University. The idea of a graph
+  with Sino-Korean words came to me in 2013 while I was studying Korean language. back then, I'd have loved
+  to have a tool to visualize them like this. : )</p><p>
+  The layout of the website was developed by <a href="http://veltsoft.com/">Veltsoft Systems</a>,
+  because I can't html.</p><p>
+</p></div>
 </header>
 <!-- /END HEADER SECTION  -->
 
@@ -114,7 +122,7 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
             <div id="ResultBar" class="col-md-2 col-sm-6 items">
                 <nav class="left-navigation">
                     <ul>
-                        <li><h4><a href="">Search results</a></h4>
+                        <li id="resTitle"><h4>Search results</h4>
                             <ul id="results">
                             </ul>
                         </li>
@@ -162,10 +170,12 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
             <aside class="right-sidebar">                                
                 <!-- Widget Start -->
                 <div id="dlist" class="widget-readers-job-board">
+                  <!--
                     <h5>Details</h5>
                     <p><a href="#">Link Example 1</a> - Other Text</p>
                     <p><a href="#">Link Example 1</a> - Other Text</p>
                     <p><a href="#">Link Example 1</a> - Other Text</p>
+                    -->
                     <!-- <div><a href="#" target="_blank" class="btn btn-fullwd btn-prime">External Link Example</a></div> -->
                 </div> <!-- end of .readers-job-board -->
                 <!-- Widget End -->
@@ -199,8 +209,7 @@ What's this? -> <link rel="stylesheet" href="../css/demo.css">
         <div class="social-icons clearfix col-md-3">                        
                         <ul>
                           <li><a href="#">Suggestions</a>&emsp;</li>
-                          <li><a href="#">About</a>&emsp;</li>
-                          <li><a href="#">Contact</a>&emsp;</li>
+                          <li><a href="javascript:showDialog('about')">About</a>&emsp;</li>
                           <!-- 
                           <li><a href=""><i class="fa flaticon-circle6"></i></a></li>
                           <li><a href=""><i class="fa flaticon-twitter4"></i></a></li>
