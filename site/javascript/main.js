@@ -52,6 +52,7 @@ function searchQueryResult() {
         $('.word-list-item').on('click',function(){
             var nod = $(this).data();
             he.showNode($(this).data(),false);
+            he.fixLayout();
         });
     }
 };
@@ -65,3 +66,4 @@ function livesearch(){
         hr.searchRequest(q,searchQueryResult);
     }
 };
+hr.searchRequest('life',searchQueryResult);
