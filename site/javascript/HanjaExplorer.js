@@ -24,13 +24,11 @@ HanjaExplorer.prototype._displayRootInfo = function() {
     if(res.length == 0) return;
     res = res[0];
     var det = {};
-    det.of = "the character";
-    det.instruction = "(See on the left, words that use this character.)";
     det.main = res.chinese;
     if(res.radicals) {
         det.secondary = "Radicals: <p>"+res.radicals+"</p>";
     } else if (res.english) {
-        det.secondary = "English meaning: <p>"+res.english+"</p>";
+        det.secondary = res.english;
     }
     det.tertiary = res.meaning;
     fillInDetails(det);
@@ -41,13 +39,7 @@ HanjaExplorer.prototype.displayRoot = function(root) {
 };
 HanjaExplorer.prototype._showNodeDetails = function(node) {
     var det = {};
-    det.of = "the word";
-    det.instruction = "(Click on a character if you want to learn about it.)";
-    det.main = "<b><lu id='roots'><a href=\"#\">"+
-        node.chinese
-        .split("")
-        .join("</a><a href=\"#\">")
-        +"</a></lu></b>";
+    det.main = node.chinese.split("");
     det.secondary = node.korean;
     det.tertiary = node.english;
     fillInDetails(det);

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Main site of the Hanja Explorer."/>
+  <title>Hanja Explorer &ndash; Study korean smarter</title>
+
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="./javascript/media.js"></script>
+  <script type="text/javascript" src="./javascript/HanjaExplorer.js"></script>
+  <script type="text/javascript" src="./javascript/HanjaReqs.js"></script>
+  <script type="text/javascript" src="./javascript/sigma.min.js"></script>
+  <script type="text/javascript" src="./javascript/sigma.layout.forceAtlas2/supervisor.js"></script>
+  <script type="text/javascript" src="./javascript/sigma.layout.forceAtlas2/worker.js"></script>
+  
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css"/>
+      <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"/>
+  <!--<![endif]-->
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/layouts/turtle-old-ie.css"/>
+      <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="css/layouts/turtle.css"/>
+  <!--<![endif]-->
+  
+      </head>
+<body>
+  <div id="layout" class="content pure-g">
+    <div id="nav" class="pure-u-1">
+      <form class="pure-form"> 
+        <div class="pure-g">
+          <div class="pure-u-1-8"></div>
+          <div class="pure-u-7-8">
+            <div id="menu" class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+              <a class="pure-menu-heading">Hanja Explorer</a>
+              <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Explore</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Shop</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Suggestions / Report a problem</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="pure-u-1-8"></div>
+          <div class="pure-u-7-8">
+            <input id="q" class="pure-input-2-3 pure-input" autocomplete="off" placeholder="Search in English, Korean or with Hanja!">
+              <button id="search-button" class="pure-button pure-button-primary turtle-button">Search</button>
+              <button class="pure-button pure-button-primary turtle-button" onclick="he.clear();">Clear</button>
+              <button class="pure-button pure-button-primary turtle-button">Undo</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="main-row" class="pure-u-1"><div id="main-grid" class="pure-g">
+    <div id="list" class="pure-u-1 pure-u-sm-2-3 pure-u-lg-1-6">
+      <div id="results" class="list-container">
+        <div class="word-list-item pure-g">
+          <div class="pure-u-1-2 word-list-chinese">愛情</div>
+          <div class="pure-u-1-2 word-list-korean">애정</div>
+          <div class="pure-u-1 word-list-english">Affection, love.</div>
+        </div>
+        <div class="word-list-item pure-g">
+          <div class="pure-u-1-2 word-list-chinese">事實</div>
+          <div class="pure-u-1-2 word-list-korean">사실</div>
+          <div class="pure-u-1 word-list-english">Fact, reality, truth.</div>
+        </div>
+        <div class="word-list-item pure-g">
+          <div class="pure-u-1-2 word-list-chinese">男女</div>
+          <div class="pure-u-1-2 word-list-korean">남녀</div>
+          <div class="pure-u-1 word-list-english">Man, and woman.</div>
+        </div>
+      </div>
+    </div>
+    <div id="main" class="pure-u-1 pure-u-lg-2-3 sigma-parent">
+    <div id="container" class="sigma-expand"></div>
+    </div>
+    <div id="info" class="pure-u-1 pure-u-sm-1-3 pure-u-lg-1-6">
+      <div class="pure-g" id="right-hand-side">
+        <div class="pure-u-1">
+          <div id="details" class="pure-g infobox">
+            <div class="pure-u-1 infobox-heading">Details</div>
+            <div class="pure-u-1 infobox-instructions">
+              Click on the chinese characters for more info.
+            </div>
+            <div id="det_main" class="pure-u-1-2 pure-u-sm-1 infobox-chinese">
+              <span class="infobox-chinese-char">事</span>
+              <span class="infobox-chinese-char">實</span>
+            </div>
+            <div id="det_secondary" class="pure-u-1-3 pure-u-sm-1 infobox-korean">사실</div>
+            <div id="det_tertiary" class="pure-u-1 infobox-english">Fact, reality, truth.</div>
+          </div>
+        </div>
+        <div class="pure-u-1 adds"></div>
+      </div>
+    </div>
+    </div></div>
+  </div>
+</body>
+<! -- WE LOAD MAIN AT THE END BECAUSE WE NEED ALL ELEMENTS IN THE PAGE -->
+  <script type="text/javascript" src="./javascript/main.js"></script>
+</html>
