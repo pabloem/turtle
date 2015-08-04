@@ -1,10 +1,15 @@
 var HanjaExplorer = function(hanjaRequester, config) {
     this._hr = hanjaRequester;
-    this._r = new sigma({container: 'container',
-                         settings: {
-                             doubleClickEnabled: false
-                         }
-                        });
+    this._r = new sigma('container');
+    this._r.settings({defaultNodeColor: "#374258",
+                      nodeColor: "default",
+                      defaultNodeHoverColor: "#fff",
+                      nodeHoverColor: "default",
+                      defaultEdgeColor: "#91aecf",
+                      edgeColor: "default",
+                      borderSize: 2,
+                      defaultNodeBorderColor: "#91aecf",
+                      doubleTapTimeout: 1000});
     this._neighbor_scale = [7,10,13,16,19,25,33,45,60,80,110,160,200,5000];
     this.refresh();
 
@@ -26,7 +31,7 @@ HanjaExplorer.prototype._displayRootInfo = function() {
     var det = {};
     det.main = res.chinese;
     if(res.radicals) {
-        det.secondary = "Radicals: <p>"+res.radicals+"</p>";
+        det.secondary = "Radicals: "+res.radicals;
     } else if (res.english) {
         det.secondary = res.english;
     }
@@ -73,7 +78,6 @@ HanjaExplorer.prototype._addNode = function(node) {
     // The nodes don't come with SigmaJS properties added, so we add:
     node.x = Math.random();
     node.y = Math.random();
-    node.color = '#AAAAAA';
     node.size = 1;
     node.label = 
         node.korean+" - "+node.chinese+"\n"+

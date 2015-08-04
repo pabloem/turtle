@@ -47,14 +47,14 @@ a {
     text-align: left;
 }
 #list { overflow: auto;
-        border-bottom: 1px solid #ddd;}
+        border-bottom: 1px solid #ddf;}
 #info { overflow: hidden; }
 #right-hand-side {
-    border: 1px solid #ddd;
+    border: 1px solid #ddf;
     height: 100%;
 }
 .list-container {
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #ddf;
     height: 100%;
 }
 
@@ -108,12 +108,14 @@ a {
         font-size: 100%;
     }
 }
+
+
  .word-list-item {
      padding: 0.5em;
-     border-bottom: 1px solid #ddd;
+     border-bottom: 1px solid #ddf;
      border-left: 6px solid transparent;
  }
- .word-list-item:hover { background: #eee; }
+ .word-list-item:hover { background: #eef; }
  .word-list-chinese { font-size: 100%; }
  .word-list-korean { font-size: 110%; }
  .word-list-english {
@@ -122,7 +124,6 @@ a {
  }
  @media screen and (min-width: 35.5em) {
      .word-list-item { padding: 0.9em 1em; }
-     .word-list-item:hover { background: #eee; }
      .word-list-chinese { font-size: 100%; }
      .word-list-korean { font-size: 120%; }
      .word-list-english { font-size: 80%; }
@@ -131,7 +132,7 @@ a {
  .infobox {
      text-align: center;
      padding: 0.5em 0.5em;
-     border-bottom: 1px solid #ddd;
+     border-bottom: 1px solid #ddf;
      height: 100%;
  }
  .infobox-heading {
@@ -146,7 +147,7 @@ a {
                     margin: 0.2em;}
  .infobox-chinese-char { padding:0.4em;
                          border-radius: 20px; }
- .infobox-chinese-char:hover { background: #ddd; }
+ .infobox-chinese-char:hover { background: #ddf; }
  .infobox-korean { font-size: 110%;
                    font-weight: bold;
                    margin: 5px; }
@@ -164,7 +165,7 @@ a {
          margin-bottom: 0.1em;
          font-size: 150%;
      }
-     .infobox-instructions { margin-bottom: 1.4em;}
+     .infobox-instructions { margin-bottom: 1em;}
      .infobox-chinese { font-size: 140%;
                         margin: 0.2em;}
  }
@@ -176,7 +177,8 @@ a {
          font-size: 150%;
      }
      .infobox:hover .infobox-instructions { visibility: visible; }
-     .infobox-instructions { visibility: hidden; }
+     .infobox-instructions { margin-bottom: 1.4em;
+                             visibility: hidden; }
       .infobox-chinese { font-size: 140%;
                          margin: 0.7em;}
  }

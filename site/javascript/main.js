@@ -43,8 +43,8 @@ function searchQueryResult() {
                function() {
                    var cont =
                            "<div class=\"word-list-item pure-g\">"+
-                           "<div class=\"pure-u-1-2 word-list-chinese\">"+this.chinese+"</div>"+
                            "<div class=\"pure-u-1-2 word-list-korean\">"+this.korean+"</div>"+
+                           "<div class=\"pure-u-1-2 word-list-chinese\">"+this.chinese+"</div>"+
                            "<div class=\"pure-u-1 word-list-english\">"+this.english+"</div>"+
                            "</div>";
                    $("#results").append($(cont).data(this));
