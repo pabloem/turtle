@@ -1,0 +1,182 @@
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+html {
+    height: 100%;
+}
+body {
+    color: #333;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #1b98f8;
+}
+
+    .pure-menu-link:hover,
+    .pure-menu-link:focus {
+        background: rgb(55, 60, 90);
+    }
+    .pure-menu-link {
+        color: #fff;
+        margin-left: 0.5em;
+    }
+    .pure-menu-heading {
+        border-bottom: none;
+        font-size:120%;
+        color: rgb(145, 173, 211);
+        font-weight: bold;
+    }
+
+ * -- LAYOUT STYLES --
+ * This layout consists of three main elements, `#nav` (navigation bar), `#list` (email list), and `#main` (email content). All 3 elements are within `#layout`
+ */
+#layout, #nav, #main, #list, #info {
+    margin: 0;
+    padding: 0;
+ }
+ #layout {height: 100%; }
+ #main-row { height: 88%; }
+ #main-grid { height: 100%; }
+#nav {
+    background: rgb(37, 42, 58);
+    height: 12%;
+    text-align: left;
+}
+#list { overflow: auto;
+        border-bottom: 1px solid #ddd;}
+#info { overflow: hidden; }
+#right-hand-side {
+    border: 1px solid #ddd;
+    height: 100%;
+}
+.list-container {
+    border-right: 1px solid #ddd;
+    height: 100%;
+}
+
+/* -- SMARTPHONE STYLES -- */
+#list, #info { height: 25%; } /* Same, except we hide them intermittently */
+#main { height: 65%; }
+#search-button { display: none; }
+#menu { display: none;
+        padding: 0;}
+
+/* -- TABLET STYLES -- */
+@media screen and (min-width: 35.5em) {
+    #list, #info { height: 25%; }
+    #main { height: 65%; }
+    #menu { display: block; }
+}
+
+/* -- DESKTOP STYLES -- */
+@media screen and (min-width: 64em) {
+    #list, #info { height: 100%; }
+    #search-button { display: inline-block; }
+}
+
+/*
+ * -- TURTLE STYLES and MODULES --
+ * Styles relevant to specific turtle thing, messages, labels, counts, and more.
+ */
+
+/* turtle-button for smartphone */
+.turtle-button {
+    width: 4em;
+    margin: 0.1em;
+    font-size: 90%;
+    padding: .3em 0.4em;
+}
+.pure-input {
+    margin: 0;
+    font-size: 80%;
+    padding: 0.1em;
+}
+/*turtle-button for tablet AND ABOVE */
+@media screen and (min-width: 35.5em) {
+    .turtle-button {
+        width: 5em;
+        font-size: 100%;
+        margin: 0.3em;
+        padding: .5em 1em;
+    }
+    .pure-input {
+        margin: 0.5em;
+        font-size: 100%;
+    }
+}
+ .word-list-item {
+     padding: 0.5em;
+     border-bottom: 1px solid #ddd;
+     border-left: 6px solid transparent;
+ }
+ .word-list-item:hover { background: #eee; }
+ .word-list-chinese { font-size: 100%; }
+ .word-list-korean { font-size: 110%; }
+ .word-list-english {
+     font-size: 90%;
+     margin: 0.4em 0;
+ }
+ @media screen and (min-width: 35.5em) {
+     .word-list-item { padding: 0.9em 1em; }
+     .word-list-item:hover { background: #eee; }
+     .word-list-chinese { font-size: 100%; }
+     .word-list-korean { font-size: 120%; }
+     .word-list-english { font-size: 80%; }
+ }
+ 
+ .infobox {
+     text-align: center;
+     padding: 0.5em 0.5em;
+     border-bottom: 1px solid #ddd;
+     height: 100%;
+ }
+ .infobox-heading {
+         margin-top: 0.1em;
+         margin-bottom: 0.1em;
+         font-size: 100%;
+ }
+ .infobox-instructions { font-size: 70%;
+                         color: #999;
+                         margin-bottom: 0.1em;}
+ .infobox-chinese { font-size: 120%;
+                    margin: 0.2em;}
+ .infobox-chinese-char { padding:0.4em;
+                         border-radius: 20px; }
+ .infobox-chinese-char:hover { background: #ddd; }
+ .infobox-korean { font-size: 110%;
+                   font-weight: bold;
+                   margin: 5px; }
+ .infobox-english { margin: 5px;
+                    font-size: 90%; }
+ .adds {
+     display: none;
+ }
+ 
+ @media screen and (min-width: 35.5em) {
+     .adds { display: block; }
+     .infobox { padding: 0.9em 1em; }
+     .infobox-heading {
+         margin-top: 0.3em;
+         margin-bottom: 0.1em;
+         font-size: 150%;
+     }
+     .infobox-instructions { margin-bottom: 1.4em;}
+     .infobox-chinese { font-size: 140%;
+                        margin: 0.2em;}
+ }
+ @media screen and (min-width: 64em) {
+     .infobox { padding: 0.9em 1em; }
+     .infobox-heading {
+         margin-top: 1em;
+         margin-bottom: 0.1em;
+         font-size: 150%;
+     }
+     .infobox:hover .infobox-instructions { visibility: visible; }
+     .infobox-instructions { visibility: hidden; }
+      .infobox-chinese { font-size: 140%;
+                         margin: 0.7em;}
+ }
+ 
