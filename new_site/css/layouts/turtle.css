@@ -40,6 +40,7 @@ a {
  #layout {height: 100%; }
  #main-row { height: 88%; }
  #main-grid { height: 100%; }
+ #container { height: 100%; }
 #nav {
     background: rgb(37, 42, 58);
     height: 12%;
@@ -59,7 +60,7 @@ a {
 
 /* -- SMARTPHONE STYLES -- */
 #list, #info { height: 25%; } /* Same, except we hide them intermittently */
-#main { height: 65%; }
+#main { height: 75%; }
 #search-button { display: none; }
 #menu { display: none;
         padding: 0;}
@@ -67,12 +68,12 @@ a {
 /* -- TABLET STYLES -- */
 @media screen and (min-width: 35.5em) {
     #list, #info { height: 25%; }
-    #main { height: 65%; }
     #menu { display: block; }
 }
 
 /* -- DESKTOP STYLES -- */
 @media screen and (min-width: 64em) {
+    #main { height: 100%; }
     #list, #info { height: 100%; }
     #search-button { display: inline-block; }
 }

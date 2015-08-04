@@ -10,6 +10,11 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script type="text/javascript" src="./javascript/media.js"></script>
+  <script type="text/javascript" src="./javascript/HanjaExplorer.js"></script>
+  <script type="text/javascript" src="./javascript/HanjaReqs.js"></script>
+  <script type="text/javascript" src="./javascript/sigma.min.js"></script>
+  <script type="text/javascript" src="./javascript/sigma.layout.forceAtlas2/supervisor.js"></script>
+  <script type="text/javascript" src="./javascript/sigma.layout.forceAtlas2/worker.js"></script>
   
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
   <!--[if lte IE 8]>
@@ -48,7 +53,7 @@
           <div class="pure-u-7-8">
             <input id="q" class="pure-input-2-3 pure-input" autocomplete="off" placeholder="Search in English, Korean or with Hanja!">
               <button id="search-button" class="pure-button pure-button-primary turtle-button">Search</button>
-              <button class="pure-button pure-button-primary turtle-button">Clear</button>
+              <button class="pure-button pure-button-primary turtle-button" onclick="he.clear();">Clear</button>
               <button class="pure-button pure-button-primary turtle-button">Undo</button>
             </div>
           </div>
@@ -56,7 +61,7 @@
       </div>
       <div id="main-row" class="pure-u-1"><div id="main-grid" class="pure-g">
     <div id="list" class="pure-u-1 pure-u-sm-2-3 pure-u-lg-1-6">
-      <div class="list-container">
+      <div id="results" class="list-container">
         <div class="word-list-item pure-g">
           <div class="pure-u-1-2 word-list-chinese">愛情</div>
           <div class="pure-u-1-2 word-list-korean">애정</div>
@@ -74,22 +79,23 @@
         </div>
       </div>
     </div>
-    <div id="main" class="pure-u-1 pure-u-lg-2-3"><p>His</p>
+    <div id="main" class="pure-u-1 pure-u-lg-2-3 sigma-parent">
+    <div id="container" class="sigma-expand"></div>
     </div>
     <div id="info" class="pure-u-1 pure-u-sm-1-3 pure-u-lg-1-6">
       <div class="pure-g" id="right-hand-side">
         <div class="pure-u-1">
-          <div class="pure-g infobox">
+          <div id="details" class="pure-g infobox">
             <div class="pure-u-1 infobox-heading">Details</div>
             <div class="pure-u-1 infobox-instructions">
               Click on the chinese characters for more info.
             </div>
-            <div class="pure-u-1-2 pure-u-sm-1 infobox-chinese">
+            <div id="det_main" class="pure-u-1-2 pure-u-sm-1 infobox-chinese">
               <span class="infobox-chinese-char">事</span>
               <span class="infobox-chinese-char">實</span>
             </div>
-            <div class="pure-u-1-3 pure-u-sm-1 infobox-korean">사실</div>
-            <div class="pure-u-1 infobox-english">Fact, reality, truth.</div>
+            <div id="det_secondary" class="pure-u-1-3 pure-u-sm-1 infobox-korean">사실</div>
+            <div id="det_tertiary" class="pure-u-1 infobox-english">Fact, reality, truth.</div>
           </div>
         </div>
         <div class="pure-u-1 adds"></div>
@@ -98,4 +104,6 @@
     </div></div>
   </div>
 </body>
+<! -- WE LOAD MAIN AT THE END BECAUSE WE NEED ALL ELEMENTS IN THE PAGE -->
+  <script type="text/javascript" src="./javascript/main.js"></script>
 </html>
