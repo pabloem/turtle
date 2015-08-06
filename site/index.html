@@ -2,108 +2,156 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
+  <meta name="description" content="Landing site of the Hanja Explorer. A tool to study Korean."/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Main site of the Hanja Explorer."/>
-  <title>Hanja Explorer &ndash; Study korean smarter</title>
 
+    <title>Hanja Explorer &ndash; Study Korean smarter!</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+<!--<![endif]-->
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="./javascript/media.js"></script>
-  <script type="text/javascript" src="./javascript/HanjaExplorer.js"></script>
-  <script type="text/javascript" src="./javascript/HanjaReqs.js"></script>
-  <script type="text/javascript" src="./javascript/sigma.min.js"></script>
-  <script type="text/javascript" src="./javascript/sigma.layout.forceAtlas2/supervisor.js"></script>
-  <script type="text/javascript" src="./javascript/sigma.layout.forceAtlas2/worker.js"></script>
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/marketing.css">
+    <!--<![endif]-->
   
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
-  <!--[if lte IE 8]>
-      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css"/>
-      <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"/>
-  <!--<![endif]-->
-  <!--[if lte IE 8]>
-      <link rel="stylesheet" href="css/layouts/turtle-old-ie.css"/>
-      <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="css/layouts/turtle.css"/>
-  <!--<![endif]-->
-  
-      </head>
+</head>
 <body>
-  <div id="layout" class="content pure-g">
-    <div id="nav" class="pure-u-1">
-      <form class="pure-form"> 
+
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+      <div id="menu" class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+        <a class="pure-menu-heading">Hanja Explorer</a>
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+          <li class="pure-menu-item"><a href="./explore.html" class="pure-menu-link">Explore</a></li>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Shop</a></li>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Suggestions / Report a problem</a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Welcome. Let's explore!</h1>
+        <p class="splash-subhead">
+          The Hanja Explorer is a new tool to study Korean vocabulary in a more didactic
+          and innovative way.
+        </p>
+        <p>
+            <a href="./explore.html" class="pure-button pure-button-primary">Start exploring!</a>
+        </p>
+    </div>
+</div>
+<div class="content-wrapper">
+    <div class="content">
+        <h2 class="content-head is-center">Do you want know more?</h2>
+
         <div class="pure-g">
-          <div class="pure-u-1-8"></div>
-          <div class="pure-u-7-8">
-            <div id="menu" class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-              <a class="pure-menu-heading">Hanja Explorer</a>
-              <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Explore</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Shop</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Suggestions / Report a problem</a></li>
-              </ul>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+                <h3 class="content-subhead">
+                    <i class="fa fa-rocket"></i>
+                    Think in a New Way
+                </h3>
+                <p>
+                  The Korean language is very rich, and its vocabulary is hard to learn. The Hanja Explorer
+                  is an innovative tool that helps you study Korean vocabulary by <b>visualizing</b>
+                  the meaning and the similarities of different words.
+                </p>
             </div>
-          </div>
-          <div class="pure-u-1-8"></div>
-          <div class="pure-u-7-8">
-            <input id="q" class="pure-input-2-3 pure-input" autocomplete="off" placeholder="Search in English, Korean or with Hanja!">
-              <button type="button" id="search-button" class="pure-button pure-button-primary turtle-button" onclick="livesearch();">Search</button>
-              <button type="button" class="pure-button pure-button-primary turtle-button" onclick="he.clear();">Clear</button>
-              <button type="button" class="pure-button pure-button-primary turtle-button">Undo</button>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-book"></i>
+                    What is Hanja?
+                </h3>
+                <p>
+                  Korean language has evolved over time; borrowing words from different languages. Hanja
+                  means 'chinese character', and about 70% of Korean vocabulary uses Hanja in some form. Something
+                  that's great about Hanja is that they can be mixed and matched to create new words.
+                </p>
             </div>
-          </div>
-        </form>
-      </div>
-      <div id="main-row" class="pure-u-1"><div id="main-grid" class="pure-g">
-    <div id="list" class="pure-u-1 pure-u-sm-2-3 pure-u-lg-1-6">
-      <div id="results" class="list-container">
-        <div class="word-list-item pure-g">
-          <div class="pure-u-1-2 word-list-chinese">愛情</div>
-          <div class="pure-u-1-2 word-list-korean">애정</div>
-          <div class="pure-u-1 word-list-english">Affection, love.</div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-th-large"></i>
+                    Why study Hanja?
+                </h3>
+                <p>
+                  Traditional education of Korean as a foreign language has largely ignored the role of Hanja
+                  in the study of Korean vocabulary. On the other hand, materials that are specific for the
+                  study of hanja place too high a value in learning how to write a character, making the process
+                  slow and difficult. These practices are not useful, nor practical.
+                </p>
+                <p>
+                  Here, you'll learn what are the <b>building blocks</b> of words; and you will be able to
+                  use them when writing and reading Korean right away.
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-mobile"></i>
+                    Study anywhere
+                </h3>
+                <p>
+                  The Hanja Explorer will work perfectly on your computer, your tablet, or your phone; so that you can
+                  study wherever and however you want.
+                </p>
+            </div>
         </div>
-        <div class="word-list-item pure-g">
-          <div class="pure-u-1-2 word-list-chinese">事實</div>
-          <div class="pure-u-1-2 word-list-korean">사실</div>
-          <div class="pure-u-1 word-list-english">Fact, reality, truth.</div>
-        </div>
-        <div class="word-list-item pure-g">
-          <div class="pure-u-1-2 word-list-chinese">男女</div>
-          <div class="pure-u-1-2 word-list-korean">남녀</div>
-          <div class="pure-u-1 word-list-english">Man, and woman.</div>
-        </div>
-      </div>
     </div>
-    <div id="main" class="pure-u-1 pure-u-lg-2-3 sigma-parent">
-    <div id="container" class="sigma-expand"></div>
-    </div>
-    <div id="info" class="pure-u-1 pure-u-sm-1-3 pure-u-lg-1-6">
-      <div class="pure-g" id="right-hand-side">
-        <div class="pure-u-1">
-          <div id="details" class="pure-g infobox">
-            <div class="pure-u-1 infobox-heading">Details</div>
-            <div class="pure-u-1 infobox-instructions">
-              Click on the chinese characters for more info.
-            </div>
-            <div id="det_main" class="pure-u-1-2 pure-u-sm-1 infobox-chinese">
-              <span class="infobox-chinese-char">事</span>
-              <span class="infobox-chinese-char">實</span>
-            </div>
-            <div id="det_secondary" class="pure-u-1-3 pure-u-sm-1 infobox-korean">사실</div>
-            <div id="det_tertiary" class="pure-u-1 infobox-english">Fact, reality, truth.</div>
-          </div>
+
+    <div class="ribbon l-box-lrg pure-g">
+        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+            <img class="pure-img-responsive" alt="File Icons" width="300" src="img/common/file-icons.png">
         </div>
-        <div class="pure-u-1 adds"></div>
-      </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+            <h2 class="content-head content-head-ribbon">Under construction.</h2>
+            <p>
+              The Hanja Explorer is still in development. Every week, new features might roll in.
+              If you have anything that you'd like to see added, please add it as a suggestion. If you
+              find a problem with the software, please report it so we can fix it. Let's build this together.
+            </p>
+        </div>
     </div>
-    </div></div>
-  </div>
+
+    <!--<div class="content">
+        <h2 class="content-head is-center">Dolore magna aliqua. Uis aute irure.</h2>
+
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1">
+                <h4>Contact Us</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+
+                <h4>More Information</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+
+    </div>-->
+
+    <div class="footer l-box is-center">
+      This page was based on the 'splash page' layout provided by the Pure by Yahoo framework, worth learning and using to build responsive websites.
+    </div>
+
+</div>
 </body>
-<! -- WE LOAD MAIN AT THE END BECAUSE WE NEED ALL ELEMENTS IN THE PAGE -->
-  <script type="text/javascript" src="./javascript/main.js"></script>
 </html>
