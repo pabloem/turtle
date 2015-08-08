@@ -1,27 +1,87 @@
+function addToSigma() {
+    sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+        var k,
+            neighbors = {},
+            index = this.allNeighborsIndex[nodeId] || {};
+        
+        for (k in index)
+            neighbors[k] = this.nodesIndex[k];
+        
+        return neighbors;
+    });
+}
+
+var normalNodeColor = "#374258",
+    dimNodeColor = "#eee",
+    labelThreshold = 8,
+    midLabelThreshold = 4,
+    lowLabelThreshold = 0;
 var HanjaExplorer = function(hanjaRequester, config) {
     this._hr = hanjaRequester;
+    addToSigma();
     this._r = new sigma('container');
-    this._r.settings({defaultNodeColor: "#374258",
-                      nodeColor: "default",
+    this._r.settings({/*
                       defaultNodeHoverColor: "#fff",
                       nodeHoverColor: "default",
                       defaultEdgeColor: "#91aecf",
                       edgeColor: "default",
                       borderSize: 2,
-                      defaultNodeBorderColor: "#91aecf",
+                      defaultNodeBorderColor: "#91aecf",*/
                       doubleTapTimeout: 1000});
     this._neighbor_scale = [7,10,13,16,19,25,33,45,60,80,110,160,200,5000];
     this.refresh();
 
     var he = this;
     this._r.bind('clickNode', function(e) {
-        var node = e.data.node;
+        var node = e.data.node,
+            nodeId = e.data.node.id,
+            neighbors = he._r.graph.neighbors(nodeId);
+        neighbors[nodeId] = node;
+        he._highlightThese(neighbors);
+        console.log("Highlighted!");
+        console.log(neighbors);
         he._showNodeDetails(node);
     });
     this._r.bind('doubleClickNode',function(e) {
         var node_id = e.data.node.id;
+        he._highlightThese(); // On double click to a node, we reset to normal
         he._setFocus(node_id);
     });
+    this._r.bind('clickStage',function(e) {
+        he._highlightThese();
+    });
+    this._r.refresh();
+};
+
+// If passed 'undefined' as argument, highlights all nodes.
+HanjaExplorer.prototype._highlightThese = function(nodes) {
+    var _this = this,
+        hNodeCount = 0;
+    this._r.graph.nodes().forEach(function(n) {
+        if(!nodes || nodes[n.id]) {
+            n.color = normalNodeColor;
+            _this.setNodeLabel(n);
+            hNodeCount += 1;
+        } else {
+            n.color = dimNodeColor;
+            n.label = "";
+        }
+    });
+    this._r.graph.edges().forEach(function(e) {
+        if (!nodes || (nodes[e.source] && nodes[e.target])) {
+            e.color = normalNodeColor;
+        } else {
+            e.color = dimNodeColor;
+        }
+    });
+    /* After adding the nodes, we set the threshold for the labels,
+       which depends on the number of nodes highlighted - or wether all were */
+    if(!nodes) this._r.settings({'labelThreshold':labelThreshold}); // On all nodes, label threshold is normal
+    else {
+        if(hNodeCount > 15) this._r.settings({'labelThreshold':midLabelThreshold});
+        else this._r.settings({'labelThreshold':lowLabelThreshold});
+    }
+    this._r.refresh();
 };
 HanjaExplorer.prototype._displayRootInfo = function() {
     if(!(this._hr.req.readyState == 4 && this._hr.req.status == 200)) return;
@@ -68,6 +128,18 @@ HanjaExplorer.prototype._addExtraEdges = function(node){
     }
 };
 
+HanjaExplorer.prototype.setNodeLabel = function(node) {
+    node.label = node.korean+" - "+this.cutEnglish(node.english);
+};
+
+HanjaExplorer.prototype.cutEnglish = function(english) {
+    var commaIdx = english.indexOf(','),
+        colonIdx = english.indexOf(';');
+    var idx = (commaIdx == -1 || colonIdx == -1) ? Math.max(commaIdx,colonIdx) : Math.min(commaIdx,colonIdx);
+    idx = idx == -1 ? english.lenght : idx;
+    return english.substring(0,idx);
+};
+
 // Ready
 HanjaExplorer.prototype._addNode = function(node) {
     var gr = this._r.graph.nodes(node['id']);
@@ -79,9 +151,8 @@ HanjaExplorer.prototype._addNode = function(node) {
     node.x = Math.random();
     node.y = Math.random();
     node.size = 1;
-    node.label = 
-        node.korean+" - "+node.chinese+"\n"+
-        node.english;
+    node.color = normalNodeColor;
+    this.setNodeLabel(node);
     this._r.graph.addNode(node);
     if(node.neighbors) {
         this._addExtraEdges(node);
