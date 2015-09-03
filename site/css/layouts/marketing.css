@@ -262,6 +262,9 @@ a.pure-button-primary {
     }
 
 
+    .tutorial {
+        text-align: center;
+    }
     /* We remove the border-separator assigned to .l-box-lrg */
     .l-box-lrg {
         border: none;
