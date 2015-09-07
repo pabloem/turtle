@@ -12,6 +12,7 @@ function addToSigma() {
 }
 
 var normalNodeColor = "#374258",
+    normalEdgeColor = "#91ADD3",
     dimNodeColor = "#eee",
     labelThreshold = 8,
     midLabelThreshold = 4,
@@ -69,7 +70,7 @@ HanjaExplorer.prototype._highlightThese = function(nodes) {
     });
     this._r.graph.edges().forEach(function(e) {
         if (!nodes || (nodes[e.source] && nodes[e.target])) {
-            e.color = normalNodeColor;
+            e.color = normalEdgeColor;
         } else {
             e.color = dimNodeColor;
         }
@@ -218,7 +219,8 @@ HanjaExplorer.prototype.addEdge = function(from,to) {
     console.log("Adding edge: "+from+" "+to);
     var edge = {id: from+" "+to,
                 source: from, 
-                target: to};
+                target: to,
+                color: normalEdgeColor};
     this._r.graph.addEdge(edge);
     this.refresh();
 };
