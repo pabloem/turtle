@@ -24,11 +24,11 @@ function fillInDetails(node) {
     $("#det_main").html(res);
     $("#det_secondary").html(node.secondary);
     $("#det_tertiary").html(node.tertiary);
+    setRootsClickEvent();
 }
 function setRootsClickEvent() {
     $("#det_main span").on('click', function() {
         var root = $(this).text();
-        $("#q").val(root);
         he.displayRoot(root);
     });
 }
@@ -51,19 +51,30 @@ function searchQueryResult() {
                });
         $('.word-list-item').on('click',function(){
             var nod = $(this).data();
+            he._apTrack.clickListAction($(this).data().id,he._details);
             he.showNode($(this).data(),false);
             he.fixLayout();
         });
     }
 };
 
-/* Works! TODO - remove comment*/
+function clickBackButton() {
+    he.clickBackButton();
+};
+
+function searchBoxValue(input) {
+    if(input === undefined) {
+        return $("#q").val().toLowerCase();
+    }
+    $("#q").val(input);
+};
+
 function livesearch(){
-    var q = $("#q").val().toLowerCase(); 
+    var q = $("#q").val().toLowerCase();
     if (q.length == 0) { 
-        //$("#results").html("");
     } else { 
         hr.searchRequest(q,searchQueryResult);
     }
 };
 hr.searchRequest('life',searchQueryResult);
+searchBoxValue('life');

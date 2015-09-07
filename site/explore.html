@@ -11,6 +11,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script type="text/javascript" src="./javascript/media.js"></script>
   <script type="text/javascript" src="./javascript/HanjaExplorer.js"></script>
+  <script type="text/javascript" src="./javascript/AppearanceTracker.js"></script>
   <script type="text/javascript" src="./javascript/HanjaReqs.js"></script>
   <script type="text/javascript" src="./javascript/sigma.min.js"></script>
   <script type="text/javascript" src="./javascript/sigma.layout.forceAtlas2/supervisor.js"></script>
@@ -62,8 +63,8 @@
           <div class="pure-u-7-8">
             <input id="q" class="pure-input-2-3 pure-input" autocomplete="off" placeholder="Search in English, Korean or with Hanja!">
               <button type="button" id="search-button" class="pure-button pure-button-primary turtle-button" onclick="livesearch();">Search</button>
+              <button type="button" class="pure-button pure-button-primary turtle-button" onclick="clickBackButton();">Undo</button>
               <button type="button" class="pure-button pure-button-primary turtle-button" onclick="he.clear();">Clear</button>
-              <!--<button type="button" class="pure-button pure-button-primary turtle-button">Undo</button>-->
             </div>
           </div>
         </form>

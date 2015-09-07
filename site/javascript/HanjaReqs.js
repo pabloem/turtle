@@ -3,6 +3,9 @@ var HanjaReqs = function() {
     this._base_url = "/runquery";
 };
 
+HanjaReqs.prototype.logRequest = function() {
+};
+
 HanjaReqs.prototype.nodeRequest = function(node_id,nodeQResult) {
     if(Array.isArray(node_id)) {
         node_id = node_id.join(" ");

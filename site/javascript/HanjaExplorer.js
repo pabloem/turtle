@@ -39,8 +39,7 @@ var HanjaExplorer = function(hanjaRequester, config) {
             neighbors = he._r.graph.neighbors(nodeId);
         neighbors[nodeId] = node;
         he._highlightThese(neighbors);
-        console.log("Highlighted!");
-        console.log(neighbors);
+        he._apTrack.clickNodeAction(he._details);
         he._showNodeDetails(node);
     });
     this._r.bind('doubleClickNode',function(e) {
@@ -52,6 +51,8 @@ var HanjaExplorer = function(hanjaRequester, config) {
         he._highlightThese();
     });
     this._r.refresh();
+    this._details = undefined;
+    this._apTrack = new AppearanceTracker();
 };
 
 // If passed 'undefined' as argument, highlights all nodes.
@@ -84,6 +85,27 @@ HanjaExplorer.prototype._highlightThese = function(nodes) {
     }
     this._r.refresh();
 };
+HanjaExplorer.prototype.clickBackButton = function() {
+    var action = this._apTrack.popAction();
+    if(!action) return ;
+    if(action.prev_details) {
+        this._fillInDetails(action.prev_details);
+    }
+    if(action.nodes && action.nodes.length > 0) {
+        for(var i = 0; i < action.nodes.length; i++) {
+            this._r.graph.dropNode(action.nodes[i]);
+        }
+        this._r.refresh();
+    }
+    if(action.search_box) {
+        this._hr.searchRequest(action.search_box,searchQueryResult);
+        searchBoxValue(action.search_box);
+    }
+};
+HanjaExplorer.prototype._fillInDetails = function(details) {
+    this._details = details;
+    fillInDetails(details);
+};
 HanjaExplorer.prototype._displayRootInfo = function() {
     if(!(this._hr.req.readyState == 4 && this._hr.req.status == 200)) return;
     var res = eval(this._hr.req.responseText);
@@ -97,10 +119,12 @@ HanjaExplorer.prototype._displayRootInfo = function() {
         det.secondary = res.english;
     }
     det.tertiary = res.meaning;
-    fillInDetails(det);
-    this._hr.searchRequest(res.chinese,searchQueryResult,false);
+    this._fillInDetails(det);
+    this._hr.searchRequest(res.chinese,searchQueryResult);
 };
 HanjaExplorer.prototype.displayRoot = function(root) {
+    this._apTrack.clickRootAction(this._details,searchBoxValue());
+    searchBoxValue(root);
     this._hr.rootRequest(root,this._displayRootInfo.bind(this));
 };
 HanjaExplorer.prototype._showNodeDetails = function(node) {
@@ -108,8 +132,7 @@ HanjaExplorer.prototype._showNodeDetails = function(node) {
     det.main = node.chinese.split("");
     det.secondary = node.korean;
     det.tertiary = node.english;
-    fillInDetails(det);
-    setRootsClickEvent();
+    this._fillInDetails(det);
 };
 HanjaExplorer.prototype.showNode = function(node,neighbors) {
     if("undefined" == typeof neighbors) neighbors = true;
@@ -250,8 +273,9 @@ HanjaExplorer.prototype._addNeighbors = function(node_id) {
     if("undefined" == typeof nd.neighbor_scale) {
         nd.neighbor_scale = 0;
     }
+    var start = nd.neighbor_scale > 0 ? this._neighbor_scale[nd.neighbor_scale - 1] : 0;
     var nb_list = 
-            nd.neighbors.slice(0,
+            nd.neighbors.slice(start,
                                this._neighbor_scale[
                                    nd.neighbor_scale]);
     if(this._neighbor_scale[nd.neighbor_scale] > nd.neighbors.length) {
@@ -267,6 +291,7 @@ HanjaExplorer.prototype._addNeighbors = function(node_id) {
 
 HanjaExplorer.prototype.clear = function() {
     this._r.graph.clear();
+    this._apTrack.clear();
     this.refresh();
 };
 
