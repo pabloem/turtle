@@ -37,24 +37,26 @@
 
 </script>
 <script>
-  function sendFeedback() {
-    console.log("Sending your feedback...");
-    var req = new XMLHttpRequest(),
-        name = encodeURIComponent(document.getElementById('name').value),
-        email = encodeURIComponent(document.getElementById('email').value),
-        comment = encodeURIComponent(document.getElementById('comment').value),
-        url = '/feedback?email='+email+'&name='+name+'&comment='+comment;
-    req.open("GET",url,true);
-    if(url.length > 1500) { alert("Please write shorter comments") return; }
-    req.onreadystatechange = function() {
-      if(req.readyState != 4) { return; }
-      if(req.status != 200) { alert("Failed posting your feedback : ( - Please try again later."); return; }
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("comment").value = "Feedback received. Thank you! : D";
-    }
-    req.send(null);
+var feedbackSent = false;
+function sendFeedback() {
+  if(feedbackSent) return ; // To prevent users from flooding the system.
+  var req = new XMLHttpRequest(),
+      name = encodeURIComponent(document.getElementById('name').value),
+      email = encodeURIComponent(document.getElementById('email').value),
+      comment = encodeURIComponent(document.getElementById('comment').value),
+      url = '/feedback?email='+email+'&name='+name+'&comment='+comment;
+  req.open("GET",url,true);
+  if(url.length > 1500) { alert("Please write shorter comments"); return; }
+  req.onreadystatechange = function() {
+    if(req.readyState != 4) { return; }
+    if(req.status != 200) { alert("Failed posting your feedback : ( - Please try again later."); return; }
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("comment").value = "Feedback received. Thank you! : D";
+    feedbackSent = true;
   }
+  req.send(null);
+}
 </script>
 </head>
 <body>
