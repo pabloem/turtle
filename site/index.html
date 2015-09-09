@@ -36,7 +36,26 @@
   ga('send', 'pageview');
 
 </script>
-
+<script>
+  function sendFeedback() {
+    console.log("Sending your feedback...");
+    var req = new XMLHttpRequest(),
+        name = encodeURIComponent(document.getElementById('name').value),
+        email = encodeURIComponent(document.getElementById('email').value),
+        comment = encodeURIComponent(document.getElementById('comment').value),
+        url = '/feedback?email='+email+'&name='+name+'&comment='+comment;
+    req.open("GET",url,true);
+    if(url.length > 1500) { alert("Please write shorter comments") return; }
+    req.onreadystatechange = function() {
+      if(req.readyState != 4) { return; }
+      if(req.status != 200) { alert("Failed posting your feedback : ( - Please try again later."); return; }
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("comment").value = "Feedback received. Thank you! : D";
+    }
+    req.send(null);
+  }
+</script>
 </head>
 <body>
 
@@ -161,7 +180,7 @@
                         <label>Your Comment</label>
                         <textarea id="comment" name="comment" class="pure-input-1" rows="5" placeholder="Your Comment"></textarea>
 
-                        <button type="submit" class="pure-button">Submit</button>
+                        <button type="button" onclick="sendFeedback()" class="pure-button">Submit</button>
                     </fieldset>
                 </form>
             </div>
@@ -186,22 +205,6 @@
     <div class="footer l-box is-center">
       This page was based on the 'splash page' layout provided by the Pure by Yahoo framework, worth learning and using to build responsive websites.
     </div>
-    <script>
-      function sendFeedback() {
-        var req = new XMLHttpRequest(),
-            name = '',
-            email = '',
-            comment = '',
-            url = '/feedback?email='+email+'&name='+name+'&comment='+comment;
-        req.open("GET",url,async);
-        this.req.onreadystatechange = function() {
-          if(!(req.readyState == 4 && req.status == 200)) {
-            alert("Couldn't post your feedback : ( - please try again later.");
-            return ;
-          }
-        }
-      }
-    </script>
 </div>
 </body>
 </html>
