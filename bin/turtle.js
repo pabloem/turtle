@@ -35,8 +35,10 @@ if(cluster.isMaster) {
                                'dictFile' : config.dictFile});
 
     var __dirname = config.siteDir;
-    app.get('/runquery', function(req,res) { hs.handleQuery(req,res); });
-    app.get('/demoquery', function(req,res) { req.headers.query = 'search as'; hs.handleQuery(req,res); });
+  app.get('/runquery', function(req,res) { hs.handleQuery(req,res); });
+  app.get('/demoquery', function(req,res) { req.headers.query = 'search as'; hs.handleQuery(req,res); });
+  app.get('/feedback', function(req,res) { res.writeHeader(200,{"Content-Type": "text/html; charset=utf-8"});
+                                           res.end(); });
     app.get('/facebook', function(req,res) { console.log("IP of bad guy: "); console.log(req.ip);
                                              res.writeHeader(200,{"Content-Type": "text/html; charset=utf-8"});
                                              res.end(); });

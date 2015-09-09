@@ -54,9 +54,9 @@
         <ul class="pure-menu-list">
           <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
           <li class="pure-menu-item"><a href="./explore.html" class="pure-menu-link">Explore</a></li>
+          <li class="pure-menu-item"><a href="#feedback" class="pure-menu-link">Suggestions / Report a problem</a></li>
           <!--<li class="pure-menu-item"><a href="#" class="pure-menu-link">Shop</a></li>
-          <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
-          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Suggestions / Report a problem</a></li>-->
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>-->
         </ul>
       </div>
     </div>
@@ -148,33 +148,66 @@
         </div>
     </div>
 
-    <!--<div class="content">
-        <h2 class="content-head is-center">Dolore magna aliqua. Uis aute irure.</h2>
+    <div class="content">
+      <a name="feedback"></a>
+      <h2 class="content-head is-center">Feedback, problems, and requests.</h2>
 
         <div class="pure-g">
-            <div class="l-box-lrg pure-u-1">
+          <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+                <form class="pure-form pure-form-stacked">
+                    <fieldset>
+
+                        <label for="name">Your Name</label>
+                        <input id="name" type="text" placeholder="Your Name">
+
+
+                        <label for="email">Your Email</label>
+                        <input id="email" type="text" placeholder="Your Email">
+
+                        <label>Your Comment</label>
+                        <textarea id="comment" name="comment" class="pure-input-1" rows="5" placeholder="Your Comment"></textarea>
+
+                        <button type="submit" class="pure-button">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
                 <h4>Contact Us</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.
+                  We are trying to build a tool that anyone can love to use. We appreciate any kind of
+                  feedback, from requests for new features, reporting of problems that you've found, or
+                  thumbs up for any feature that you appreciate. Please go ahead and submit a comment!
                 </p>
 
                 <h4>More Information</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
+                  If you want to get in contact directly with the developer, you can also go to my
+                  <a href="http://github.com/pabloem/">Github Page</a>.
                 </p>
             </div>
         </div>
 
-    </div>-->
+    </div>
 
     <div class="footer l-box is-center">
       This page was based on the 'splash page' layout provided by the Pure by Yahoo framework, worth learning and using to build responsive websites.
     </div>
-
+    <script>
+      function sendFeedback() {
+        var req = new XMLHttpRequest(),
+            name = '',
+            email = '',
+            comment = '',
+            url = '/feedback?email='+email+'&name='+name+'&comment='+comment;
+        req.open("GET",url,async);
+        this.req.onreadystatechange = function() {
+          if(!(req.readyState == 4 && req.status == 200)) {
+            alert("Couldn't post your feedback : ( - please try again later.");
+            return ;
+          }
+        }
+      }
+    </script>
 <div id="dialog" class="tutorial is-hidden">
   <iframe width="480" height="320" src="https://www.youtube.com/embed/gV-WM4mHZx0" frameborder="0" allowfullscreen></iframe>
 </div>
