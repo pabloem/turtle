@@ -1,9 +1,5 @@
 var hr = new HanjaReqs();
 var he = new HanjaExplorer(hr);
-/*$(function() {
-    $("#dialog").dialog({width: 600,
-                         modal: true});
-});*/
 
 $(function(){ 
     var t = null;
@@ -12,7 +8,16 @@ $(function(){
             clearTimeout(t); 
         } 
         t = setTimeout("livesearch()", 400); 
-    }); 
+    });
+    $(document).ready(function() {
+        $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                livesearch();
+                return false;
+            }
+        });
+    });
 });
 
 function fillInDetails(node) {

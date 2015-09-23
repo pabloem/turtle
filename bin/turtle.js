@@ -43,7 +43,7 @@ if(cluster.isMaster) {
                                                "Comment: {"+req.query.comment+"}\n\n";
                                            fs.stat("feedback.txt",function(err,stat) {
                                              if(err || stat.size < 1000000000) { // If the file doesn't exist or is less than 1GB
-                                               fs.writeFile("feedback.txt",chunk,function(err){});
+                                               fs.appendFile("feedback.txt",chunk,function(err){});
                                              }
                                            });
                                            // req.query is a dictionary with the parsed variables!

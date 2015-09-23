@@ -290,9 +290,13 @@ HanjaExplorer.prototype._addNeighbors = function(node_id) {
 };
 
 HanjaExplorer.prototype.clear = function() {
-    this._r.graph.clear();
-    this._apTrack.clear();
-    this.refresh();
+  //this._r.graph.clear();
+  var nodes = this._r.graph.nodes();
+  for(var i = 0; i < nodes.length; i++) {
+    this._r.graph.dropNode(nodes[i].id);
+  }
+  this._apTrack.clear();
+  this.refresh();
 };
 
 HanjaExplorer.prototype.refresh = function() {
