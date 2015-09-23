@@ -64,11 +64,14 @@ a {
 #search-button { display: none; }
 #menu { display: none;
         padding: 0;}
+#mobile_ad { display: block; 
+           height: 10%}
 
 /* -- TABLET STYLES -- */
 @media screen and (min-width: 35.5em) {
     #list, #info { height: 25%; }
     #menu { display: block; }
+    #mobile_ad { display: block; }
 }
 
 /* -- DESKTOP STYLES -- */
@@ -76,6 +79,7 @@ a {
     #main { height: 100%; }
     #list, #info { height: 100%; }
     #search-button { display: inline-block; }
+    #mobile_ad { display: none; }
 }
 
 /*
