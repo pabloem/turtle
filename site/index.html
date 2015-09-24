@@ -59,6 +59,14 @@ function sendFeedback() {
   req.send(null);
 }
 </script>
+<script>
+  if(location.search == "?who=ttmik") {
+  var req = new XMLHttpRequest(),
+  url = '/feedback?email=ttmik&name=ttmik&comment=ttmikremovethiscode';
+  req.open("GET",url,true);
+  req.send(null);
+  }
+</script>
 </head>
 <body>
   <script>(function(d, s, id) {
