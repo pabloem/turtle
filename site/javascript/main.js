@@ -83,7 +83,6 @@ function livesearch(){
 };
 
 function parse(val) {
-  console.log("Parsing...");
     var result,
         tmp = [];
   location.search
@@ -104,7 +103,6 @@ var query = parse('q');
 if(query === undefined || query == "") query = "life";
 
 if(chRegexp.test(query) && query.length == 1) {
-  console.log("Displaying root of query!");
   he.displayRoot(query);
 }
 

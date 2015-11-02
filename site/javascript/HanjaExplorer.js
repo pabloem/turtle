@@ -16,7 +16,9 @@ var normalNodeColor = "#374258",
     dimNodeColor = "#eee",
     labelThreshold = 8,
     midLabelThreshold = 4,
-    lowLabelThreshold = 0;
+    lowLabelThreshold = 0,
+    hanjaColors = {}, hColCount = 0,
+    palet = palette('tol',12);
 var HanjaExplorer = function(hanjaRequester, config) {
     this._hr = hanjaRequester;
     addToSigma();
@@ -56,12 +58,12 @@ var HanjaExplorer = function(hanjaRequester, config) {
 };
 
 // If passed 'undefined' as argument, highlights all nodes.
-HanjaExplorer.prototype._highlightThese = function(nodes) {
+HanjaExplorer.prototype._highlightThese = function(nodes,customColor) {
     var _this = this,
         hNodeCount = 0;
     this._r.graph.nodes().forEach(function(n) {
         if(!nodes || nodes[n.id]) {
-            n.color = normalNodeColor;
+            n.color = customColor || normalNodeColor;
             _this.setNodeLabel(n);
             hNodeCount += 1;
         } else {
@@ -71,7 +73,7 @@ HanjaExplorer.prototype._highlightThese = function(nodes) {
     });
     this._r.graph.edges().forEach(function(e) {
         if (!nodes || (nodes[e.source] && nodes[e.target])) {
-            e.color = normalEdgeColor;
+            e.color = customColor || normalEdgeColor;
         } else {
             e.color = dimNodeColor;
         }
@@ -97,10 +99,13 @@ HanjaExplorer.prototype.clickBackButton = function() {
         }
         this._r.refresh();
     }
-    if(action.search_box) {
-        this._hr.searchRequest(action.search_box,searchQueryResult);
-        searchBoxValue(action.search_box);
-    }
+  if(action.search_box) {
+    this._hr.searchRequest(action.search_box,searchQueryResult);
+    searchBoxValue(action.search_box);
+  }
+  if(action.type == 'CLICK_ROOT') {
+      he._highlightThese();
+  }
 };
 HanjaExplorer.prototype._fillInDetails = function(details) {
     this._details = details;
@@ -125,7 +130,14 @@ HanjaExplorer.prototype._displayRootInfo = function() {
 HanjaExplorer.prototype.displayRoot = function(root) {
     this._apTrack.clickRootAction(this._details,searchBoxValue());
     searchBoxValue(root);
-    this._hr.rootRequest(root,this._displayRootInfo.bind(this));
+  this._hr.rootRequest(root,this._displayRootInfo.bind(this));
+  var rootNodes = {}, hanColor;
+  this._r.graph.nodes().forEach(function(n) {
+    if(n.chinese.indexOf(root) != -1) rootNodes[n.id] = n;
+  });
+  hanColor = hanjaColors[root] || "#" + palet[hColCount++ % palet.length];
+  hanjaColors[root] = hanColor;
+  this._highlightThese(rootNodes,hanColor);
 };
 HanjaExplorer.prototype._showNodeDetails = function(node) {
     var det = {};
