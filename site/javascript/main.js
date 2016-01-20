@@ -81,5 +81,5 @@ function livesearch(){
         hr.searchRequest(q,searchQueryResult);
     }
 };
-hr.searchRequest('life',searchQueryResult);
-searchBoxValue('life');
+hr.searchRequest('한국',searchQueryResult);
+searchBoxValue('한국');
