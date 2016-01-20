@@ -72,7 +72,7 @@ function searchBoxValue(input) {
         return $("#q").val().toLowerCase();
     }
     $("#q").val(input);
-};
+}
 
 function livesearch(){
     var q = $("#q").val().toLowerCase();
@@ -81,5 +81,30 @@ function livesearch(){
         hr.searchRequest(q,searchQueryResult);
     }
 };
-hr.searchRequest('한국',searchQueryResult);
-searchBoxValue('한국');
+
+function parse(val) {
+    var result,
+        tmp = [];
+  location.search
+    //.replace ( "?", "" )
+    .substr(1)
+    .split("&")
+    .forEach(function (item) {
+      tmp = item.split("=");
+      console.log(tmp);
+      if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+    });
+  return result;
+}
+// Regexp for chinese stuff!
+var chRegexp = new RegExp("[\u4E00-\u9FFF|\u2FF0-\u2FFF|\u31C0-\u31EF|\u3200-\u9FBF|\uF900-\uFAFF]");
+
+var query = parse('q');
+if(query === undefined || query == "") query = '한국';
+
+if(chRegexp.test(query) && query.length == 1) {
+  he.displayRoot(query);
+}
+
+hr.searchRequest(query,searchQueryResult);
+searchBoxValue(query);

@@ -13,7 +13,7 @@ if(cluster.isMaster) {
         console.log("Usage: ./turtle.js config.json workers");
         return process.exit(1);
     }
-    var workers = parseInt(args[1])
+  var workers = parseInt(args[1]) || 1;
     for(var i = 0; i < workers; i++) {
         cluster.fork();
     }

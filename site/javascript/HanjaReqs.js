@@ -1,6 +1,20 @@
 var HanjaReqs = function() {
-    this.req = new XMLHttpRequest();
-    this._base_url = "/runquery";
+  this.req = new XMLHttpRequest();
+  this._base_url = "/runquery";
+  this.reqInProgress = false;
+  this.pending = [];
+};
+
+HanjaReqs.prototype.doneRequest = function(callback) {
+  if(this.req.readyState != 4 || this.req.status != 200) return;
+  callback();
+  if(this.pending.length > 0) {
+    this.reqInProgress = false;
+    var r = this.pending.shift();
+    this._request(r.url_suffix,r.callback, r.async);
+  } else {
+    this.reqInProgress = false;
+  }
 };
 
 HanjaReqs.prototype.logRequest = function() {
@@ -30,9 +44,15 @@ HanjaReqs.prototype.rootRequest = function(root,rootReqResult) {
 };
 
 HanjaReqs.prototype._request = function(url_suffix, callback,async) {
-    var url = this._base_url + url_suffix;
-    console.log("URL is: \"" +url+"\"");
-    this.req.open("GET",url,async);
-    this.req.onreadystatechange = callback;
-    this.req.send( null );
+  if(this.reqInProgress == true) {
+    this.pending.push({url_suffix:url_suffix, callback:callback, async:async});
+    return ;
+  }
+  var url = this._base_url + url_suffix,
+      _this = this;
+  console.log("URL is: \"" +url+"\"");
+  this.req.open("GET",url,async);
+  this.req.onreadystatechange = function() {_this.doneRequest(callback); };
+  this.reqInProgress = true;
+  this.req.send( null );
 };
