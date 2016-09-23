@@ -1,0 +1,17 @@
+{
+  "name": "turtle",
+  "version": "0.1.1",
+  "bin": {
+    "turtle":"./bin/turtle.js"
+  },
+  "scripts":{
+    "start": "node ./bin/turtle.js"
+  },
+  "main": "bin/turtle.js",
+  "dependencies": {
+    "express":"^4.12.3",
+    "binarysearch": "^0.2.4",
+    "json": "^9.0.3",
+    "sax": "^0.6.1"
+  }
+}
