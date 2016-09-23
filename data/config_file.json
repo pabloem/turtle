@@ -1,6 +1,6 @@
 {
     "listenPort": "8080",
-    "graphFile" : "/home/pablo/codes/turtle/data/kor_graph.graphml",
-    "dictFile":"/home/pablo/codes/turtle/data/hanja_list.json",
-    "siteDir":"/home/pablo/codes/turtle/site"
+    "graphFile" : "data/kor_graph.graphml",
+    "dictFile":"data/hanja_list.json",
+    "siteDir":"site/"
 }

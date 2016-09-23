@@ -4,8 +4,12 @@
   "bin": {
     "turtle":"./bin/turtle.js"
   },
+  "repository" : { "type" : "git",
+                   "url" : "https://github.com/pabloem/turtle.git"
+                 },
+  "files":["data/", "site/"],
   "scripts":{
-    "start": "node ./bin/turtle.js"
+    "start": "node ./bin/turtle.js data/config_file.json"
   },
   "main": "bin/turtle.js",
   "dependencies": {
