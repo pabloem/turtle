@@ -7,13 +7,13 @@ var HanjaServer = require('../lib/HanjaServer.js'),
     cluster = require('cluster');
 
 var args = process.argv.slice(2);
+if(args.length < 1 || args.length > 3) {
+  console.log("Usage: ./turtle.js config.json workers");
+  return process.exit(1);
+}
+var workers = parseInt(args[1]) || 1;
 
-if(cluster.isMaster) {
-    if(args.length < 1 || args.length > 3) {
-        console.log("Usage: ./turtle.js config.json workers");
-        return process.exit(1);
-    }
-  var workers = parseInt(args[1]) || 1;
+if(cluster.isMaster || workers != 1) {
     for(var i = 0; i < workers; i++) {
         cluster.fork();
     }
